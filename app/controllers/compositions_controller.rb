@@ -15,7 +15,6 @@ class CompositionsController < ApplicationController
 
   # POST /compositions
   def create
-    pp params
     @composition = Composition.new(composition_params)
 
     if @composition.save
@@ -40,8 +39,8 @@ class CompositionsController < ApplicationController
       @composition = Composition.find(params[:id])
     end
 
-    # Only allow a trusted parameter "white list" through.
+  # Only allow a trusted parameter "white list" through.
     def composition_params
-      params.require(:composition).permit(:author, :votes, :player_ids)
+      params.require(:composition).permit(:author, :votes, player_ids: [])
     end
 end
