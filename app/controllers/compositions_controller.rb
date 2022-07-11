@@ -3,9 +3,9 @@ class CompositionsController < ApplicationController
 
   # GET /compositions
   def index
-    @compositions = Composition.all
+    @compositions_players = Composition.build_compositions_players_hash
 
-    render json: @compositions
+    render json: @compositions_players
   end
 
   # GET /compositions/1
@@ -13,7 +13,7 @@ class CompositionsController < ApplicationController
     render json: @composition
   end
 
-  # POST /compositions
+  # POST /compositionsr
   def create
     @composition = Composition.new(composition_params)
 
